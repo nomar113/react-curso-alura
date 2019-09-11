@@ -4,47 +4,44 @@ const TableHead = () => {
     return (
         <thead>
             <tr>
-                <th>Autores</th>
-                <th>Livros</th>
-                <th>Preços</th>
+                <th>Livro</th>
+                <th>Autor</th>
+                <th>Preço</th>
                 <th>Remover</th>
             </tr>
         </thead>
     )
 }
 
-const TableBody = () => {
+const TableBody = props => {
+    const rows = props.books.map((row, index) => {
+        return (
+            <tr key={index}>
+                <td>{row.name}</td>
+                <td>{row.author}</td>
+                <td>{row.price}</td>
+                <td><button>Remover</button></td>
+            </tr>
+        );
+    });
+
     return (
         <tbody>
-            <tr>
-                <td>Ramon</td>
-                <td>Aprendendo React</td>
-                <td>50</td>
-                <td><button>Remover</button></td>
-            </tr>
-            <tr>
-                <td>Aline</td>
-                <td>Aprendendo Vue.js</td>
-                <td>500</td>
-                <td><button>Remover</button></td>
-            </tr>
-            <tr>
-                <td>Bruno</td>
-                <td>Aprendendo Git</td>
-                <td>10</td>
-                <td><button>Remover</button></td>
-            </tr>
+            {rows}
         </tbody>
-    )
+    );
 }
 
 
 class Tabela extends Component {
     render () {
+
+        const { books } = this.props;
+
         return (
             <table>
                 <TableHead />
-                <TableBody />
+                <TableBody books={books} />
             </table>
         )
     }
