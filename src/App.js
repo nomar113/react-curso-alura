@@ -24,14 +24,27 @@ class App extends Component {
     ],
   };
 
+  removeBook = index => {
+
+    const { books } = this.state;
+
+    this.setState(
+      {
+        books: books.filter((book, currentIndex) => {
+          return currentIndex !== index
+        }),
+      }
+    );
+
+  }
+
   render () {
     return (
       <div className="App">
-        <Tabela books={this.state.books} />
+        <Tabela books={this.state.books} removeBook={this.removeBook} />
       </div>
     );
   }
-
 
 }
 
