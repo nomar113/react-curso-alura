@@ -39,11 +39,15 @@ class App extends Component {
 
   }
 
+  listenSubmit = book => {
+    this.setState({ books: [...this.state.books, book] })
+  }
+
   render () {
     return (
       <Fragment>
         <Tabela books={this.state.books} removeBook={this.removeBook} />
-        <Formulario />
+        <Formulario listenSubmit={this.listenSubmit} />
       </Fragment>
     );
   }

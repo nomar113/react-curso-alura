@@ -22,6 +22,11 @@ class Formulario extends Component {
         });
     }
 
+    submitForm = () => {
+        this.props.listenSubmit(this.state);
+        this.setState(this.initialState);
+    }
+
     render () {
 
         const { name, author, price } = this.state;
@@ -52,7 +57,7 @@ class Formulario extends Component {
                     value={price}
                     onChange={this.listenInput}
                 />
-                <button type="button">Salvar</button>
+                <button type="button" onClick={this.submitForm}>Salvar</button>
             </form>
         );
     }
